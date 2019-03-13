@@ -33,10 +33,10 @@ class Car {
 class MyCar extends Car {
     constructor(mileage, fuel) {
         super(mileage, fuel);
-        this.mileage = 0;
-        this.fuel = 20;
     }
     drive(distance) {
+        if (isNaN(distance))
+            return 'ошибка при введении данных';
         if (distance > (this.fuel * 10))
             return 'ошибка при введении данных, в баке недостаточно топлива для данной дистанции';
         this.mileage += distance;
@@ -46,7 +46,7 @@ class MyCar extends Car {
         }
     }
     refuel(gas) {
-        gas > 0 ? this.fuel += gas : console.log('error');
+        gas > 0 ? this.fuel += gas : console.log('ошибка при введении данных');
     }
     get carInfo() {
         return `общий пробег машины: ${this.mileage}, количество бензина в машине: ${this.fuel}`;
